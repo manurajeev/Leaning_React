@@ -41,9 +41,12 @@ class App extends Component {
     })
   };
 
+  
+
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color:'white',
       font:'inherit',
       border:'1px solid blue',
       padding: '8px',
@@ -60,12 +63,22 @@ class App extends Component {
         click={() => this.deletePersonHandler(index)}
         changed= {(event) => this.nameChangeHandler(event,p.id)}
         />)
-      );
+        );
+        style.backgroundColor = 'red';
+    }
+    console.log(this.state.person);
+    const classes = [];
+    if(this.state.person.length <= 2){
+      classes.push('red');
+    }
+    if(this.state.person.length <= 1){
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <h1>App Component</h1>
+        <p className={classes.join(' ')}>It's working bro</p>
         <button style={style} onClick={this.togglePersonsHandler}>Switch Names</button>
         { persons }
       </div>
